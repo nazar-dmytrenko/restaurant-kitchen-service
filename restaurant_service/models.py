@@ -24,3 +24,26 @@ class Cook(AbstractUser):
         return f"{self.username} ({self.first_name} {self.last_name})"
 
 
+class Dish(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    dish_type = models.ForeignKey(
+        DishType,
+        on_delete=models.CASCADE,
+        related_name="dishes"
+    )
+    cooks = models.ManyToManyField(
+        Cook,
+        related_name="dishes"
+    )
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Dish"
+        verbose_name_plural = "Dishes"
+
+    def __str__(self):
+        return (
+            f"{self.name} (price: {self.price}, type: {self.dish_type.name}"
+        )
