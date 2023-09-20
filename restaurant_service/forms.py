@@ -49,3 +49,9 @@ class CookCreationForm(UserCreationForm):
         if years_of_experience > 60:
             raise ValidationError("Cook can't have that much of experience!")
         return years_of_experience
+
+
+class CookUpdateForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ["username", "years_of_experience", "first_name", "last_name"]
