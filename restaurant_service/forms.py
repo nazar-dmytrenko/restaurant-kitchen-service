@@ -55,3 +55,39 @@ class CookUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ["username", "years_of_experience", "first_name", "last_name"]
+
+
+class DishForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={"placeholder": "*Name: "}
+        ),
+        label="")
+    description = forms.CharField(
+        widget=forms.Textarea(
+            attrs={"placeholder": "*Description: "}
+        ),
+        label="")
+    price = forms.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        widget=forms.NumberInput(
+            attrs={"placeholder": "*Price:"}
+        ),
+        label="")
+    dish_type = forms.ModelChoiceField(
+        queryset=DishType.objects.all(),
+        widget=forms.Select(
+            attrs={"placeholder": "Choose the dish type"}
+        ),
+        empty_label="Choose the dish type")
+    cooks = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    class Meta:
+        model = Dish
+        fields = "__all__"
