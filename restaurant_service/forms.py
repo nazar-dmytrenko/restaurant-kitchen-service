@@ -112,3 +112,14 @@ class DishTypeForm(forms.ModelForm):
         if not re.match(pattern, name):
             raise ValidationError("Name can't contain digits!")
         return name
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search the dish by name..."}
+        )
+    )
