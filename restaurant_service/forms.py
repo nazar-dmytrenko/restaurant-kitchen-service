@@ -91,3 +91,24 @@ class DishForm(forms.ModelForm):
     class Meta:
         model = Dish
         fields = "__all__"
+
+
+class DishTypeForm(forms.ModelForm):
+    name = forms.CharField(
+        max_length=255,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "*Name"}
+        )
+    )
+
+    class Meta:
+        model = DishType
+        fields = "__all__"
+
+    def clean_name(self):
+        pattern = r"^[a-zA-Z\s]+$"
+        name = self.cleaned_data["name"]
+        if not re.match(pattern, name):
+            raise ValidationError("Name can't contain digits!")
+        return name
