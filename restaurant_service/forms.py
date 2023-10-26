@@ -57,6 +57,17 @@ class CookUpdateForm(forms.ModelForm):
         fields = ["username", "years_of_experience", "first_name", "last_name"]
 
 
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search the dish by username..."}
+        )
+    )
+
+
 class DishForm(forms.ModelForm):
     name = forms.CharField(
         max_length=255,
@@ -93,6 +104,17 @@ class DishForm(forms.ModelForm):
         fields = "__all__"
 
 
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search the dish by name..."}
+        )
+    )
+
+
 class DishTypeForm(forms.ModelForm):
     name = forms.CharField(
         max_length=255,
@@ -114,7 +136,7 @@ class DishTypeForm(forms.ModelForm):
         return name
 
 
-class DishSearchForm(forms.Form):
+class DishTypeSearchForm(forms.Form):
     name = forms.CharField(
         max_length=255,
         required=False,
