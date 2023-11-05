@@ -128,3 +128,52 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("restaurant:dish-type-list")
     template_name = "" #restaurant/dish_type_confirm_delete.html
 
+
+class CookListView(generic.ListView):
+    model = get_user_model()
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(CookListView, self).get_context_data(**kwargs)
+
+        username = self.request.GET.get("username", "")
+
+        context["search_form"] = CookSearchForm(initial={
+            "username": username
+        })
+
+        return context
+
+    def get_queryset(self):
+        queryset = get_user_model().objects.all()
+        form = CookSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                username__icontains=form.cleaned_data["username"]
+            )
+        return queryset
+
+
+class CookDetailView(generic.DetailView):
+    model = get_user_model()
+    queryset = Cook.objects.prefetch_related("dishes__dish_type")
+
+
+class CookCreateView(LoginRequiredMixin, generic.CreateView):
+    model = get_user_model()
+    form_class = CookCreationForm
+    template_name = "" #restaurant/cook_form.html
+
+
+class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = get_user_model()
+    form_class = CookUpdateForm
+    template_name = "" #restaurant/cook_form.html
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = get_user_model()
+    success_url = reverse_lazy("restaurant:cook-list")
+    template_name = "" #restaurant/cook_confirm_delete.html
+
