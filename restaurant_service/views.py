@@ -177,3 +177,33 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("restaurant:cook-list")
     template_name = "" #restaurant/cook_confirm_delete.html
 
+
+class SignUpView(generic.CreateView):
+    model = get_user_model()
+    form_class = CookCreationForm
+    template_name = "" #registration/signup.html
+    success_url = reverse_lazy("restaurant:index")
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, "Your account is created successfully")
+        new_user = authenticate(
+            username=form.cleaned_data["username"],
+            password=form.cleaned_data["password1"]
+        )
+
+        login(self.request, new_user)
+        return redirect("restaurant:index")
+
+
+class DishUpdateCookView(LoginRequiredMixin, generic.UpdateView):
+    def post(self, request, *args, **kwargs):
+        cook = request.user
+        dish = get_object_or_404(Dish, pk=kwargs["pk"])
+
+        if cook in dish.cooks.all():
+            dish.cooks.remove(cook)
+        else:
+            dish.cooks.add(cook)
+        return redirect("restaurant:dish-detail", pk=kwargs["pk"])
+
