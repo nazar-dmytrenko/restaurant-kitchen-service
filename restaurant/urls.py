@@ -16,7 +16,36 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LogoutView
+
+from restaurant_service.views import (
+    index_view,
+    SignUpView,
+
+    DishListView,
+    DishCreateView,
+    DishDetailView,
+    DishUpdateView,
+    DishDeleteView,
+
+    DishTypeListView,
+    DishTypeDetailView,
+    DishTypeCreateView,
+    DishTypeUpdateView,
+    DishTypeDeleteView,
+    DishUpdateCookView,
+
+    CookListView,
+    CookDetailView,
+    CookCreateView,
+    CookUpdateView,
+    CookDeleteView
+)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", index_view),
+    path("logout/", LogoutView.as_view(), name="logout")
+
 ]
