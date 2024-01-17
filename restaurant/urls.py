@@ -39,13 +39,17 @@ from restaurant_service.views import (
     CookDetailView,
     CookCreateView,
     CookUpdateView,
-    CookDeleteView
+    CookDeleteView,
+    login_view,
+    register_user
 )
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index_view),
+    path("login/",  login_view, name="login"),
+    path('register/', register_user, name="register"),
     path("logout/", LogoutView.as_view(), name="logout")
 
 ]
