@@ -29,7 +29,7 @@
     $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
 
     @if map-get($utility, rfs) {
-      // Inside the media query
+      // Inside the cooks query
       @if $is-rfs-media-query {
         $val: rfs-value($value);
 

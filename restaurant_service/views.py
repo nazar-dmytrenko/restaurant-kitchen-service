@@ -192,6 +192,8 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class CookListView(generic.ListView):
     model = get_user_model()
     paginate_by = 5
+    template_name = "restaurant/cook_list.html"
+
 
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(CookListView, self).get_context_data(**kwargs)

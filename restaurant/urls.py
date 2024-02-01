@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 from restaurant_service.views import (
     index_view,
@@ -47,9 +49,10 @@ from restaurant_service.views import (
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", index_view),
+    path("", index_view, name="home"),
     path("login/",  login_view, name="login"),
     path('register/', register_user, name="register"),
-    path("logout/", LogoutView.as_view(), name="logout")
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path("cooks/", CookListView.as_view(), name="cook-list")
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-]
