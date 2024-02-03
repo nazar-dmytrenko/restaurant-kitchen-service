@@ -15,13 +15,13 @@
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
     <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/kitchen.jpg');">
-      <span class="mask bg-gradient-info opacity-8"></span>
+      <span class="mask bg-gradient-danger opacity-8"></span>
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center mx-auto my-auto">
-            <h1 class="text-white">Work with an amazing team</h1>
-            <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-            <button type="submit" class="btn bg-white text-dark">Create Account</button>
+            <h1 class="text-white">Dishes in our menu</h1>
+            <p class="lead mb-4 text-white opacity-8">We have different kind of our dishes in restaurant</p>
+            <button type="submit" class="btn bg-white text-dark">Add new dish</button>
             <h6 class="text-white mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center">
               <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>
@@ -51,7 +51,7 @@
   </header>
   <!-- -------- END HEADER 7 w/ text and video ------- -->
   <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
-  <section class="pt-sm-8 pb-5 position-relative bg-gradient-dark overflow-hidden">
+  <section class="pt-sm-8 pb-5 position-relative bg-gradient-danger overflow-hidden">
     <div class="position-absolute w-100 z-inde-1 top-0 mt-n3">
       <svg width="100%" viewBox="0 -2 1920 157" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>wave-down</title>
@@ -67,35 +67,34 @@
     <div class="container">
       <div class="row">
         <div class="col-md-10 text-left mb-5 mt-10">
-          <h3 class="text-white z-index-1 position-relative">The Best Cook Team</h3>
-          <p class="text-white opacity-8 mb-0">There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill.</p>
+          <h3 class="text-white z-index-1 position-relative">Dish list that we have for now</h3>
+          <p class="text-white opacity-8 mb-0">You can change it whit adding the new one.</p>
         </div>
       </div>
     </div>
-    {% for cook in cook_list %}
-      {% if cook.is_superuser is False %}
-        <div clss="row">
-          <div class="col-lg-0 mx-3 my-3">
-            <div class="card card-profile overflow-hidden">
-              <div class="row">
-                <div class="col-lg-3 ">
-                  <a href="javascript:;">
-                    <div class="p-3 pe-10">
-                      <img class="w-100 border-radius-md" src="{{ cook.profile_picture }}">
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-8 ps-lg-0 my-auto">
-                  <div class="card-body">
-                    <h5 class="mb-0">{{ cook.first_name }} {{ cook.last_name }}</h5>
-                    <h6 class="text-info">{{ cook.years_of_experience }} years of experience</h6>
+    {% for dish in dish_list %}
+      <div class="row">
+        <div class="col-md my-2 mx-4">
+          <div class="card card-profile overflow-hidden">
+            <div class="row">
+              <div class="col-lg-3">
+                <a href="javascript:;">
+                  <div class="p-3 pe-10">
+                    <img class="w-100 border-radius-md" src="{{ dish.picture }}">
                   </div>
+                </a>
+              </div>
+              <div class="col-lg-8 ps-lg-0 my-auto">
+                <div class="card-body">
+                  <h5 class="mb-0">{{ dish.name }}</h5>
+                  <h6 class="text-info">{{ dish.price }}$</h6>
+                  <p>{{ dish.description }}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      {% endif %}
+      </div>
     {% endfor %}
   </section>
   <!-- -------- END Features w/ pattern background & stats & rocket -------- -->
