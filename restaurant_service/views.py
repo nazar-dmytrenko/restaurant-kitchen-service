@@ -56,7 +56,7 @@ def register_user(request):
             msg = 'User created - please <a href="/login">login</a>.'
             success = True
 
-            # return redirect("/login/")
+            return redirect("/login/")
 
         else:
             msg = 'Form is not valid'
@@ -68,7 +68,6 @@ def register_user(request):
 
 @login_required(login_url="/login/")
 def index_view(request):
-    """View function for the home page of the site."""
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
     num_dish_types = DishType.objects.count()
@@ -243,7 +242,6 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 class SignUpView(generic.CreateView):
     model = get_user_model()
     form_class = CookCreationForm
-    template_name = "" #registration/signup.html
     success_url = reverse_lazy("restaurant:index")
 
     def form_valid(self, form):

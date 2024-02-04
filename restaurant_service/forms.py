@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.core.exceptions import ValidationError
-from django.contrib.auth.models import User
+from .models import Cook
 
 
 from restaurant_service.models import Dish, DishType
@@ -28,9 +28,26 @@ class LoginForm(forms.Form):
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(
+        max_length=255,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Username",
+                "class": "form-control"
+            }
+        ))
+    first_name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name",
+                "class": "form-control"
+            }
+        ))
+    last_name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
                 "class": "form-control"
             }
         ))
@@ -57,7 +74,7 @@ class SignUpForm(UserCreationForm):
         ))
 
     class Meta:
-        model = User
+        model = Cook
         fields = ('username', 'email', 'password1', 'password2')
 
 
@@ -72,7 +89,7 @@ class CookCreationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
-            attrs={"placeholder": "First_name: "}
+            attrs={"placeholder": "First name: "}
         ),
         label=""
     )
