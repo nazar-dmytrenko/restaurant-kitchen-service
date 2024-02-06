@@ -143,29 +143,42 @@ class DishForm(forms.ModelForm):
     name = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
-            attrs={"placeholder": "*Name: "}
+            attrs={
+                "placeholder": "Name: ",
+                "class": "form-control"
+            }
+
         ),
         label="")
     description = forms.CharField(
         widget=forms.Textarea(
-            attrs={"placeholder": "*Description: "}
+            attrs={
+                "placeholder": "Description: ",
+                "class": "form-control"
+            }
         ),
         label="")
     price = forms.DecimalField(
         max_digits=5,
         decimal_places=2,
         widget=forms.NumberInput(
-            attrs={"placeholder": "*Price:"}
+            attrs={
+                "placeholder": "Price:",
+                "class": "form-control"
+            }
         ),
         label="")
     dish_type = forms.ModelChoiceField(
         queryset=DishType.objects.all(),
         widget=forms.Select(
-            attrs={"placeholder": "Choose the dish type"}
+            attrs={
+                "placeholder": "Choose the dish type",
+                "class": "form-control"
+            }
         ),
         empty_label="Choose the dish type")
     cooks = forms.ModelMultipleChoiceField(
-        queryset=get_user_model().objects.all(),
+        queryset=Cook.objects.filter(is_superuser=False, is_staff=False),
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
