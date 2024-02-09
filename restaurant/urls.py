@@ -55,6 +55,7 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
-    path("create_dish/", DishCreateView.as_view(), name="create_dish")
+    path("create_dish/", DishCreateView.as_view(), name="create_dish"),
+    path("dishtypes/", DishTypeListView.as_view(), name="dish_type-list")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
