@@ -39,7 +39,7 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     picture = models.ImageField(
         upload_to='dish',
-        default="picture/def_pfp.png"
+        default="picture/def_pfp.png",
     )
     dish_type = models.ForeignKey(
         DishType,

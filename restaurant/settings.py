@@ -128,9 +128,11 @@ STATICFILES_DIRS = [
 
 ASSETS_ROOT = '/static/assets'
 
-MEDIA_URL = '/cooks/'       # trailing slash is needed.
+MEDIA_URL = '/cook-page/'
+MEDIA_URL_1 = '/cooks/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'restaurant/media')
+MEDIA_ROOT_1 = os.path.join(BASE_DIR, 'restaurant/media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

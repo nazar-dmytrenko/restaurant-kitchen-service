@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 
 from restaurant_service.views import (
     index_view,
-    SignUpView,
 
     DishListView,
     DishCreateView,
@@ -56,6 +55,7 @@ urlpatterns = [
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
     path("create_dish/", DishCreateView.as_view(), name="create_dish"),
-    path("dishtypes/", DishTypeListView.as_view(), name="dish_type-list")
+    path("dishtypes/", DishTypeListView.as_view(), name="dish_type-list"),
+    path("cook-page/<int:pk>", CookDetailView.as_view(), name="cook-page")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

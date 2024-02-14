@@ -216,6 +216,7 @@ class CookListView(generic.ListView):
 class CookDetailView(generic.DetailView):
     model = get_user_model()
     queryset = Cook.objects.prefetch_related("dishes__dish_type")
+    template_name = "restaurant/cook-page.html"
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
