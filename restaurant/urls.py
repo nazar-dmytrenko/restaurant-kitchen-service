@@ -56,6 +56,8 @@ urlpatterns = [
     path("dishes/", DishListView.as_view(), name="dish-list"),
     path("create_dish/", DishCreateView.as_view(), name="create_dish"),
     path("dishtypes/", DishTypeListView.as_view(), name="dish_type-list"),
-    path("cook-page/<int:pk>", CookDetailView.as_view(), name="cook-page")
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("cook-page/<int:pk>", CookDetailView.as_view(), name="cook-page"),
+    path("dish-page/<int:pk>", DishDetailView.as_view(), name="dish-page")
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(
+    settings.MEDIA_URL_1, document_root=settings.MEDIA_ROOT_1)
 

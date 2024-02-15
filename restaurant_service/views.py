@@ -113,6 +113,7 @@ class DishListView(generic.ListView):
 class DishDetailView(generic.DetailView):
     model = Dish
     queryset = Dish.objects.prefetch_related("cooks")
+    template_name = "restaurant/dish-page.html"
 
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):

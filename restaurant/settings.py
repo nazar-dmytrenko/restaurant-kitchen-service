@@ -128,10 +128,10 @@ STATICFILES_DIRS = [
 
 ASSETS_ROOT = '/static/assets'
 
-MEDIA_URL = '/cook-page/'
-MEDIA_URL_1 = '/cooks/'
-
+MEDIA_URL = '/cooks/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'restaurant/media')
+
+MEDIA_URL_1 = '/cook-page/'
 MEDIA_ROOT_1 = os.path.join(BASE_DIR, 'restaurant/media')
 
 # Default primary key field type
