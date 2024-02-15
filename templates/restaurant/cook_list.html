@@ -21,7 +21,9 @@
           <div class="col-lg-8 text-center mx-auto my-auto">
             <h1 class="text-white">Work with an amazing team</h1>
             <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-            <button type="submit" class="btn bg-white text-dark">Create Account</button>
+            <a href="/register">
+              <button type="submit" class="btn bg-white text-dark">Create Account</button>
+            </a>
             <h6 class="text-white mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center">
               <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>
@@ -76,23 +78,23 @@
       {% if cook.is_superuser is False %}
         <div clss="row">
           <div class="col-lg-0 mx-3 my-3">
-            <div class="card card-profile overflow-hidden">
-              <div class="row">
-                <div class="col-lg-3 ">
-                  <a href="javascript:;">
+            <a href="/cook-page/{{ cook.id }}">
+              <div class="card card-profile overflow-hidden">
+                <div class="row">
+                  <div class="col-lg-3 ">
                     <div class="p-3 pe-10">
                       <img class="w-100 border-radius-md" src="{{ cook.profile_picture }}">
                     </div>
-                  </a>
-                </div>
-                <div class="col-lg-8 ps-lg-0 my-auto">
-                  <div class="card-body">
-                    <h5 class="mb-0">{{ cook.first_name }} {{ cook.last_name }}</h5>
-                    <h6 class="text-info">{{ cook.years_of_experience }} years of experience</h6>
+                  </div>
+                  <div class="col-lg-8 ps-lg-0 my-auto">
+                    <div class="card-body">
+                      <h5 class="mb-0">{{ cook.first_name }} {{ cook.last_name }}</h5>
+                      <h6 class="text-info">{{ cook.years_of_experience }} years of experience</h6>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       {% endif %}

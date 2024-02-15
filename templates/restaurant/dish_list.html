@@ -21,7 +21,9 @@
           <div class="col-lg-8 text-center mx-auto my-auto">
             <h1 class="text-white">Dishes in our menu</h1>
             <p class="lead mb-4 text-white opacity-8">We have different kind of our dishes in restaurant</p>
-            <button type="submit" class="btn bg-white text-dark">Add new dish</button>
+            <a href="/create_dish">
+              <button class="btn bg-white text-dark">Add new dish</button>
+            </a>
             <h6 class="text-white mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center">
               <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>
@@ -75,24 +77,25 @@
     {% for dish in dish_list %}
       <div class="row">
         <div class="col-md my-2 mx-4">
-          <div class="card card-profile overflow-hidden">
-            <div class="row">
-              <div class="col-lg-3">
-                <a href="javascript:;">
+          <a href="/dish-page/{{ dish.id }}">
+            <div class="card card-profile overflow-hidden">
+              <div class="row">
+                <div class="col-lg-3">
                   <div class="p-3 pe-10">
                     <img class="w-100 border-radius-md" src="{{ dish.picture }}">
                   </div>
-                </a>
-              </div>
-              <div class="col-lg-8 ps-lg-0 my-auto">
-                <div class="card-body">
-                  <h5 class="mb-0">{{ dish.name }}</h5>
-                  <h6 class="text-info">{{ dish.price }}$</h6>
-                  <h6 class="description">{{ dish.description }}</h6>
+                </div>
+                <div class="col-lg-8 ps-lg-0 my-auto">
+                  <div class="card-body">
+                    <h5 class="mb-0">{{ dish.name }}</h5>
+                    <h6 class="text-info">{{ dish.price }}$</h6>
+                    <h6 class="description">{{ dish.description }}</h6>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
+
         </div>
       </div>
     {% endfor %}
