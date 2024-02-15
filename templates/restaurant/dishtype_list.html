@@ -75,22 +75,22 @@
     {% for dishtype in dishtype_list %}
       <div class="row">
         <div class="col-md my-2 mx-4">
-          <div class="card card-profile overflow-hidden">
-            <div class="row">
-              <div class="col-lg-3">
-                <a href="javascript:;">
+          <a href="/dishtype-page/{{ dishtype.id }}"
+            <div class="card card-profile overflow-hidden">
+              <div class="row">
+                <div class="col-lg-3">
                   <div class="p-3 pe-10">
                     <img class="w-100 border-radius-md" src="{{ dishtype.picture }}">
                   </div>
-                </a>
-              </div>
-              <div class="col-lg-8 ps-lg-0 my-auto">
-                <div class="card-body">
-                  <h5 class="mb-0">{{ dishtype.name }}</h5>
+                </div>
+                <div class="col-lg-8 ps-lg-0 my-auto">
+                  <div class="card-body">
+                    <h5 class="mb-0">{{ dishtype.name }}</h5>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     {% endfor %}
