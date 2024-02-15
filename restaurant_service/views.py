@@ -161,7 +161,7 @@ class DishTypeListView(generic.ListView):
 
 
 class DishTypeDetailView(generic.DetailView):
-    template_name = "" #restaurant/dish_type_detail.html
+    template_name = "restaurant/dishtype-page.html"
     context_object_name = "dish_type"
     model = DishType
     queryset = DishType.objects.all()
