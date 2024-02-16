@@ -235,8 +235,8 @@ class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = get_user_model()
-    success_url = reverse_lazy("restaurant:cook-list")
-    template_name = "" #restaurant/cook_confirm_delete.html
+    success_url = reverse_lazy("cook-list")
+    template_name = "restaurant/cook-confirm-delete.html"
 
 
 class SignUpView(generic.CreateView):
