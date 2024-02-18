@@ -130,8 +130,8 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
-    success_url = reverse_lazy("restaurant:dish-list")
-    template_name = "" #restaurant/dish_confirm_delete.html
+    success_url = reverse_lazy("dish-list")
+    template_name = "restaurant/dish-confirm-delete.html"
 
 
 class DishTypeListView(generic.ListView):
@@ -184,8 +184,8 @@ class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = DishType
     context_object_name = "dish_type"
-    success_url = reverse_lazy("restaurant:dish-type-list")
-    template_name = "" #restaurant/dish_type_confirm_delete.html
+    success_url = reverse_lazy("dish-type-list")
+    template_name = "restaurant/dish-type-confirm-delete.html"
 
 
 class CookListView(generic.ListView):
