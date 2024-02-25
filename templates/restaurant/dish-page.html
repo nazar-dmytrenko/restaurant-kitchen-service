@@ -24,7 +24,7 @@
                 <h4 class="mb-0">{{ dish.name }}</h4>
                 {% if user.is_superuser or user.id == cook.id %}
                 <div class="d-block">
-                  <button type="button" class="btn bg-gradient-info w-auto me-1 mb-0">update</button>
+                  <a href="/dish/{{ dish.id }}/update" type="button" class="btn bg-gradient-info w-auto me-1 mb-0">update</a>
                   <a href="/dish/{{ dish.id }}/delete" type="button" class="btn bg-gradient-danger w-auto me-1 mb-0">delete</a>
                 </div>
                 {% endif %}

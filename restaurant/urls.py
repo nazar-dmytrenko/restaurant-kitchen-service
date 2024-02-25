@@ -63,6 +63,7 @@ urlpatterns = [
     path("cook/create", CookCreateView.as_view(), name="cook-create"),
     path("cook/<int:pk>/update", CookUpdateView.as_view(), name="cook-update"),
     path("dish/<int:pk>/delete", DishDeleteView.as_view(), name="dish-delete"),
+    path("dish/<int:pk>/update", DishUpdateView.as_view(), name="dish-update"),
     path("dishtype/<int:pk>/delete", DishTypeDeleteView.as_view(), name="dish-type-delete")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(
     settings.MEDIA_URL_1, document_root=settings.MEDIA_ROOT_1)
