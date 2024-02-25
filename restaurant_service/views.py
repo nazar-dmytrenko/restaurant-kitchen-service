@@ -231,7 +231,8 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
     form_class = CookUpdateForm
-    template_name = "" #restaurant/cook_form.html
+    success_url = reverse_lazy("cook-page")
+    template_name = "restaurant/cook_form.html"
 
 
 class CookDeleteView(LoginRequiredMixin, generic.DeleteView):

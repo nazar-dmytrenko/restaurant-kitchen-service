@@ -160,6 +160,57 @@ class CookCreationForm(UserCreationForm):
 
 
 class CookUpdateForm(forms.ModelForm):
+    username = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "*Username: ",
+                "class": "form-control"
+            }
+        ),
+        label=""
+    )
+    first_name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "First name: ",
+                "class": "form-control"
+
+            }
+        ),
+        label=""
+    )
+    last_name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name: ",
+                "class": "form-control"
+
+            }
+        ),
+        label=""
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        )
+    )
+    years_of_experience = forms.IntegerField(
+        widget=forms.NumberInput(
+            attrs={
+                "placeholder": "*Years of experience:",
+                "class": "form-control"
+
+            }
+        ),
+        label= ""
+    )
+
     class Meta:
         model = get_user_model()
         fields = ["username", "years_of_experience", "first_name", "last_name"]
