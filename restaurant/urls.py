@@ -38,8 +38,8 @@ from restaurant_service.views import (
 
     CookListView,
     CookDetailView,
-    CookCreateView,
     CookUpdateView,
+    CookCreateView,
     CookDeleteView,
     login_view,
     register_user
@@ -60,6 +60,7 @@ urlpatterns = [
     path("dish-page/<int:pk>", DishDetailView.as_view(), name="dish-page"),
     path("dishtype-page/<int:pk>", DishTypeDetailView.as_view(), name="dish-type-page"),
     path("cook/<int:pk>/delete", CookDeleteView.as_view(), name="cook-delete"),
+    path("cook/create", CookCreateView.as_view(), name="cook-create"),
     path("dish/<int:pk>/delete", DishDeleteView.as_view(), name="dish-delete"),
     path("dishtype/<int:pk>/delete", DishTypeDeleteView.as_view(), name="dish-type-delete")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(

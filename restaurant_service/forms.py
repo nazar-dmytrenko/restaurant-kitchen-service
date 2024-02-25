@@ -82,30 +82,67 @@ class CookCreationForm(UserCreationForm):
     username = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
-            attrs={"placeholder": "*Username: "}
+            attrs={
+                "placeholder": "*Username: ",
+                "class": "form-control"
+            }
         ),
         label=""
     )
     first_name = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
-            attrs={"placeholder": "First name: "}
+            attrs={
+                "placeholder": "First name: ",
+                "class": "form-control"
+
+            }
         ),
         label=""
     )
     last_name = forms.CharField(
         max_length=255,
         widget=forms.TextInput(
-            attrs={"placeholder": "Last name: "}
+            attrs={
+                "placeholder": "Last name: ",
+                "class": "form-control"
+
+            }
         ),
         label=""
     )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control"
+            }
+        )
+    )
     years_of_experience = forms.IntegerField(
         widget=forms.NumberInput(
-            attrs={"placeholder": "*Years of experience:"}
+            attrs={
+                "placeholder": "*Years of experience:",
+                "class": "form-control"
+
+            }
         ),
         label= ""
     )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control"
+            }
+        ))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password check",
+                "class": "form-control"
+            }
+        ))
 
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
