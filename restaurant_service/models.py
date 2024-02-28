@@ -6,7 +6,8 @@ class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
     picture = models.ImageField(
         upload_to='dishtype',
-        default="picture/def_pfp.png"
+        default="picture/def_pfp.png",
+        blank = True
     )
 
     class Meta:
@@ -21,7 +22,7 @@ class DishType(models.Model):
 class Cook(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
     profile_picture = models.ImageField(
-        upload_to='avatars',
+        upload_to='media/avatars',
         default="picture/def_pfp.png",
         blank=True
     )
@@ -38,8 +39,9 @@ class Dish(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     picture = models.ImageField(
-        upload_to='dish',
+        upload_to='media/dish',
         default="picture/def_pfp.png",
+        blank=True
     )
     dish_type = models.ForeignKey(
         DishType,
