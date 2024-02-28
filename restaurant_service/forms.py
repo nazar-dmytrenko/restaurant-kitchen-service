@@ -117,17 +117,18 @@ class CookCreationForm(UserCreationForm):
                 "placeholder": "Email",
                 "class": "form-control"
             }
-        )
+        ),
+        label=""
     )
     years_of_experience = forms.IntegerField(
         widget=forms.NumberInput(
             attrs={
-                "placeholder": "*Years of experience:",
+                "placeholder": "Years of experience:",
                 "class": "form-control"
 
             }
         ),
-        label= ""
+        label=""
     )
     password1 = forms.CharField(
         widget=forms.PasswordInput(
@@ -135,14 +136,18 @@ class CookCreationForm(UserCreationForm):
                 "placeholder": "Password",
                 "class": "form-control"
             }
-        ))
+        ),
+        label=""
+    )
     password2 = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Password check",
                 "class": "form-control"
             }
-        ))
+        ),
+        label=""
+    )
 
     class Meta(UserCreationForm.Meta):
         model = get_user_model()

@@ -131,11 +131,6 @@ ASSETS_ROOT = '/static/assets'
 MEDIA_URL = '/cooks/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/avatars/')
 
-#MEDIA_URL_CP = '/cook-page/'
-#MEDIA_ROOT_CP = os.path.join(BASE_DIR, 'media/')
-
-#MEDIA_URL_DL = '/dish-list/'
-#MEDIA_ROOT_DL = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
