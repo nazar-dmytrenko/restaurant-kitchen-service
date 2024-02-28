@@ -67,5 +67,13 @@ urlpatterns = [
     path("dishtype/<int:pk>/delete", DishTypeDeleteView.as_view(), name="dish-type-delete"),
     path("dishtype/<int:pk>/update", DishTypeUpdateView.as_view(), name="dish-type-update"),
     path("dishtype/create", DishTypeCreateView.as_view(), name="dish-type-create"),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ] + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+) + static(
+    settings.MEDIA_URL_1, document_root=settings.MEDIA_ROOT_1
+) + static(
+    settings.MEDIA_URL_2, document_root=settings.MEDIA_ROOT_2
+) + static(
+    settings.MEDIA_URL_3, document_root=settings.MEDIA_ROOT_3
+)
 

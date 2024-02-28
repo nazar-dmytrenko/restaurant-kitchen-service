@@ -203,7 +203,8 @@ class CookUpdateForm(forms.ModelForm):
                 "placeholder": "Email",
                 "class": "form-control"
             }
-        )
+        ),
+        label=""
     )
     years_of_experience = forms.IntegerField(
         widget=forms.NumberInput(
@@ -213,12 +214,12 @@ class CookUpdateForm(forms.ModelForm):
 
             }
         ),
-        label= ""
+        label=""
     )
 
     class Meta:
         model = get_user_model()
-        fields = ["username", "years_of_experience", "first_name", "last_name"]
+        fields = UserCreationForm.Meta.fields + ("years_of_experience", "first_name", "last_name")
 
 
 class CookSearchForm(forms.Form):
@@ -260,7 +261,8 @@ class DishForm(forms.ModelForm):
                 "class": "form-control"
             }
         ),
-        label="")
+        label=""
+    )
     dish_type = forms.ModelChoiceField(
         queryset=DishType.objects.all(),
         widget=forms.Select(
@@ -269,7 +271,8 @@ class DishForm(forms.ModelForm):
                 "class": "form-control"
             }
         ),
-        empty_label="Choose the dish type")
+        label=""
+    )
     cooks = forms.ModelMultipleChoiceField(
         queryset=Cook.objects.filter(is_superuser=False, is_staff=False),
         widget=forms.CheckboxSelectMultiple,
