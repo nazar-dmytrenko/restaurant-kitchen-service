@@ -4,11 +4,6 @@ from django.db import models
 
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    picture = models.ImageField(
-        upload_to='dishtype/',
-        default="picture/def_pfp.png",
-        blank=True
-    )
 
     class Meta:
         ordering = ["name"]
@@ -23,7 +18,7 @@ class Cook(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
     profile_picture = models.ImageField(
         upload_to='avatars/',
-        default="picture/def_pfp.png",
+        default="pictures/def_pfp.png",
         blank=True
     )
 
@@ -40,7 +35,7 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2)
     picture = models.ImageField(
         upload_to='dish/',
-        default="picture/def_pfp.png",
+        default="pictures/def_pfp.png",
         blank=True
     )
     dish_type = models.ForeignKey(

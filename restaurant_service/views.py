@@ -46,7 +46,7 @@ def register_user(request):
     success = False
 
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        form = SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
@@ -235,7 +235,7 @@ class CookCreateView(LoginRequiredMixin, generic.CreateView):
 class CookUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = get_user_model()
     form_class = CookUpdateForm
-    success_url = reverse_lazy("cook-page")
+    success_url = reverse_lazy("cook-list")
     template_name = "restaurant/cook_form.html"
 
 
