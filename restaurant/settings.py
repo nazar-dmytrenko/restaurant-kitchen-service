@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crispy_forms",
-    "restaurant_service"
+    "restaurant_service",
+    "crispy_bootstrap4"
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,5 @@ ASSETS_ROOT = '/static/assets'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+

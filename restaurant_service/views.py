@@ -11,10 +11,14 @@ from restaurant_service.forms import (
     CookCreationForm,
     CookSearchForm,
     CookUpdateForm,
+
     DishForm,
     DishSearchForm,
+
     DishTypeForm,
-    DishTypeSearchForm, LoginForm)
+    DishTypeSearchForm,
+    LoginForm
+)
 from restaurant_service.models import (Cook, Dish, DishType)
 
 

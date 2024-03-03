@@ -74,15 +74,29 @@
         </div>
       </div>
     </div>
+
+    <form method="get" action="">
+      <div class="row mx-10">
+        <div class="col-md-4">
+          <div class="input-group">{{ search_form }}</div>
+        </div>
+        <div class="col-md-4 ps-1">
+          <div class="input-group">
+            <input class="btn bg-white" type="submit" value="Find">
+          </div>
+        </div>
+      </div>
+    </form>
+
     {% for dish in dish_list %}
       <div class="row">
-        <div class="col-md my-2 mx-4 pe-10">
+        <div class="mx-3 my-2 ps-10 pe-10">
           <a href="/dish-page/{{ dish.id }}">
             <div class="card card-profile overflow-hidden">
               <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                   <div class="p-3 pe-5">
-                    <img class="w-100 border-radius-md" src="{{ dish.picture }}">
+                    <img class="w-100 border-radius-lg" src="/static/assets/img/cloche-lid.jpg">
                   </div>
                 </div>
                 <div class="col-lg-8 my-auto">
@@ -99,11 +113,12 @@
         </div>
       </div>
     {% endfor %}
+
   {% if is_paginated %}
     <div class="col-lg-8">
-      <ul class="pagination pagination-primary m-3">
+      <ul class="pagination pagination-primary mt-4 mx-10">
         {% if page_obj.has_previous %}
-          <li class="page-item ">
+          <li class="page-item me-1">
             <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
               <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
             </a>
@@ -123,6 +138,7 @@
       </ul>
     </div>
   {% endif %}
+
   </section>
   <!-- -------- END Features w/ pattern background & stats & rocket -------- -->
 

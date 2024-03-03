@@ -178,7 +178,10 @@ class CookSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Search the dish by username..."}
+            attrs={
+                "placeholder": "Search by username...",
+                "class": "form-control"
+            }
         )
     )
 
@@ -240,7 +243,10 @@ class DishSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Search the dish by name..."}
+            attrs={
+                "placeholder": "Search the dish by name...",
+                "class": "form-control"
+            }
         )
     )
 
