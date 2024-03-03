@@ -14,8 +14,7 @@ from restaurant_service.forms import (
     DishForm,
     DishSearchForm,
     DishTypeForm,
-    DishTypeSearchForm, LoginForm, SignUpForm
-)
+    DishTypeSearchForm, LoginForm)
 from restaurant_service.models import (Cook, Dish, DishType)
 
 
@@ -46,7 +45,7 @@ def register_user(request):
     success = False
 
     if request.method == "POST":
-        form = SignUpForm(request.POST, request.FILES)
+        form = CookCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
@@ -61,7 +60,7 @@ def register_user(request):
         else:
             msg = 'Form is not valid'
     else:
-        form = SignUpForm()
+        form = CookCreationForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 

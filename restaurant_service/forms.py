@@ -28,64 +28,6 @@ class LoginForm(forms.Form):
     )
 
 
-class SignUpForm(UserCreationForm):
-    username = forms.CharField(
-        max_length=255,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Username",
-                "class": "form-control"
-            }
-        )
-    )
-    first_name = forms.CharField(
-        max_length=255,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "First name",
-                "class": "form-control"
-            }
-        )
-    )
-    last_name = forms.CharField(
-        max_length=255,
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Last name",
-                "class": "form-control"
-            }
-        )
-    )
-    email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                "placeholder": "Email",
-                "class": "form-control"
-            }
-        )
-    )
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "placeholder": "Password",
-                "class": "form-control"
-            }
-        ))
-
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "placeholder": "Password check",
-                "class": "form-control"
-            }
-        )
-    )
-
-    class Meta:
-        model = Cook
-        fields = ('username', 'email', 'password1', 'password2', 'profile_picture')
-
-
 class CookCreationForm(UserCreationForm):
     username = forms.CharField(
         max_length=255,
