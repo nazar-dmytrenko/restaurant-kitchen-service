@@ -257,7 +257,7 @@ class DishTypeForm(forms.ModelForm):
         label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "*Name",
+                "placeholder": "Name",
                 "class": "form-control"
             }
 
@@ -282,7 +282,10 @@ class DishTypeSearchForm(forms.Form):
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Search the dish by name..."}
+            attrs={
+                "placeholder": "Search the dish type by name...",
+                "class": "form-control"
+            }
         )
     )
 

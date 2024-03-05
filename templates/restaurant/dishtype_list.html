@@ -72,13 +72,26 @@
         </div>
       </div>
     </div>
+
+    <form method="get" action="">
+      <div class="row mx-10">
+        <div class="col-md-4">
+          <div class="input-group">{{ search_form }}</div>
+        </div>
+        <div class="col-md-4 ps-1">
+          <div class="input-group">
+            <input class="btn bg-white" type="submit" value="Find">
+          </div>
+        </div>
+      </div>
+    </form>
+
     {% for dishtype in dishtype_list %}
       <div class="row">
-        <div class="col-md my-2 mx-4 pe-10">
-          <a href="/dishtype-page/{{ dishtype.id }}"
+        <div class="mx-3 my-2 ps-10 pe-10">
             <div class="card card-profile overflow-hidden">
               <div class="row">
-                <div class="col-lg-5 ps-lg-2 my-auto">
+                <div class="col-lg-2">
                   <div class="card-body">
                     <h5 class="mb-0">{{ dishtype.name }}</h5>
                   </div>
@@ -89,6 +102,7 @@
         </div>
       </div>
     {% endfor %}
+
   </section>
   <!-- -------- END Features w/ pattern background & stats & rocket -------- -->
 
