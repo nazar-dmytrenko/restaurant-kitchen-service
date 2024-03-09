@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views import View, generic
+from django.views import generic
 
 
 from restaurant_service.forms import (
@@ -263,16 +263,3 @@ class SignUpView(generic.CreateView):
 
         login(self.request, new_user)
         return redirect("restaurant:index")
-
-
-class DishUpdateCookView(LoginRequiredMixin, generic.UpdateView):
-    def post(self, request, *args, **kwargs):
-        cook = request.user
-        dish = get_object_or_404(Dish, pk=kwargs["pk"])
-
-        if cook in dish.cooks.all():
-            dish.cooks.remove(cook)
-        else:
-            dish.cooks.add(cook)
-        return redirect("restaurant:dish-detail", pk=kwargs["pk"])
-

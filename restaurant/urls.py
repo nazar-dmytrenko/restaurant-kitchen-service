@@ -34,7 +34,6 @@ from restaurant_service.views import (
     DishTypeCreateView,
     DishTypeUpdateView,
     DishTypeDeleteView,
-    DishUpdateCookView,
 
     CookListView,
     CookDetailView,
