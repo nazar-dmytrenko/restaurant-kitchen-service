@@ -101,9 +101,7 @@ class CookCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = UserCreationForm.Meta.fields + (
-            "first_name", "last_name", "years_of_experience"
-        )
+        fields = ('username', 'first_name', 'last_name', 'years_of_experience', 'email', 'password1', 'password2',)
 
     def clean_years_of_experience(self):
         years_of_experience = self.cleaned_data["years_of_experience"]

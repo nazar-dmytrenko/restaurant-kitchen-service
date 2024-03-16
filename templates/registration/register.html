@@ -46,6 +46,11 @@
                   </div>
 
                   <div class="mb-3">
+                    {{ form.years_of_experience }}
+                  </div>
+                  <span class="text-error">{{ form.years_of_experience.errors }}</span>
+
+                  <div class="mb-3">
                     {{ form.email }}
                   </div>
                   <span class="text-error">{{ form.email.errors }}</span>

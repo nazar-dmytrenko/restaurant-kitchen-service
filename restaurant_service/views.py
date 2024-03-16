@@ -22,51 +22,50 @@ from restaurant_service.forms import (
 from restaurant_service.models import (Cook, Dish, DishType)
 
 
-def login_view(request):
-    form = LoginForm(request.POST or None)
+class SingInView(generic.View):
+    form_class = LoginForm
+    template_name = "registration/login.html"
 
-    msg = None
+    def get(self, request):
+        form = self.form_class
+        return render(request, self.template_name, {'form': form})
 
-    if request.method == "POST":
+    def post(self, request):
+        if request.method == "POST":
+            form = LoginForm(request.POST)
 
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("/")
+            if form.is_valid():
+                username = form.cleaned_data.get("username")
+                password = form.cleaned_data.get("password")
+                user = authenticate(username=username, password=password)
+                if user is not None:
+                    login(self.request, user)
+                    return redirect("home")
+                else:
+                    messages.error(self.request, 'Invalid credentials')
             else:
-                msg = 'Invalid credentials'
-        else:
-            msg = 'Error validating the form'
+                messages.error(self.request, 'Error validating the form')
 
-    return render(request, "accounts/login.html", {"form": form, "msg": msg})
+        form = LoginForm()
+        return render(request, "registration/login.html", {"form": form})
 
 
-def register_user(request):
-    msg = None
-    success = False
+class SignUpView(generic.CreateView):
+    model = get_user_model()
+    template_name = "registration/register.html"
+    form_class = CookCreationForm
+    success_url = reverse_lazy("home")
 
-    if request.method == "POST":
-        form = CookCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get("username")
-            raw_password = form.cleaned_data.get("password1")
-            user = authenticate(username=username, password=raw_password)
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, "Your account is created successfully")
+        new_user = authenticate(
+            username=form.cleaned_data["username"],
+            password=form.cleaned_data["password1"]
+        )
 
-            msg = 'User created - please <a href="/login">login</a>.'
-            success = True
-
-            return redirect("/login/")
-
-        else:
-            msg = 'Form is not valid'
-    else:
-        form = CookCreationForm()
-
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+        login(self.request, new_user)
+        return redirect("home")
 
 
 @login_required(login_url="/login/")
@@ -77,7 +76,7 @@ def index_view(request):
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
     context = {
-        "num_cooks": num_cooks,
+        "num_cooks": num_cooks - 1,
         "num_dishes": num_dishes,
         "num_dish_types": num_dish_types,
         "num_visits": num_visits + 1,
@@ -248,18 +247,4 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "restaurant/cook-confirm-delete.html"
 
 
-class SignUpView(generic.CreateView):
-    model = get_user_model()
-    form_class = CookCreationForm
-    success_url = reverse_lazy("restaurant:index")
 
-    def form_valid(self, form):
-        form.save()
-        messages.success(self.request, "Your account is created successfully")
-        new_user = authenticate(
-            username=form.cleaned_data["username"],
-            password=form.cleaned_data["password1"]
-        )
-
-        login(self.request, new_user)
-        return redirect("restaurant:index")

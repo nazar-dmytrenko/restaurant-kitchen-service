@@ -40,16 +40,16 @@ from restaurant_service.views import (
     CookUpdateView,
     CookCreateView,
     CookDeleteView,
-    login_view,
-    register_user
+    SingInView,
+    SignUpView
 )
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index_view, name="home"),
-    path("login/",  login_view, name="login"),
-    path('register/', register_user, name="register"),
+    path("login/",  SingInView.as_view(), name="login"),
+    path('register/', SignUpView.as_view(), name="register"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("cooks/", CookListView.as_view(), name="cook-list"),
     path("dishes/", DishListView.as_view(), name="dish-list"),
