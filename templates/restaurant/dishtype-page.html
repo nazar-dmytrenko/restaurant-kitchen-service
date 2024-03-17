@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} {{ cook.first_name }} {{ cook.last_name }} {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block body_class %} blog-author bg-gray-100 {% endblock body_class %}
+
+{% block content %}
+
+  {% include "includes/navigation-light.html" %}
+
+  <section class="py-sm-7 py-5 position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <div class="row py-lg-7 py-5">
+            <div class="col-lg-3 col-md-5 position-relative my-auto">
+              <img class="img border-radius-lg max-width-200 w-100 position-relative z-index-2" src="{{ cook.profile_picture }}">
+            </div>
+            <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mt-sm-0 mt-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h4 class="mb-0">{{ dish_type.name }}</h4>
+                {% if user.is_superuser or user.id == cook.id %}
+                <div class="d-block">
+                  <a href="/dishtype/{{ dish_type.id }}/update" type="button" class="btn bg-gradient-info w-auto me-1 mb-0">update</a>
+                  <a href="/dishtype/{{ dish_type.id }}/delete" type="button" class="btn bg-gradient-danger w-auto me-1 mb-0">delete</a>
+                </div>
+                {% endif %}
+              </div>
+
+              <div class="row my-4">
+                <span class="h6">Dishes:</span>
+              </div>
+              {% for dish in dish_type.dishes.all %}
+                <hr>
+                {% if user.is_superuser %}
+                  <p class="text-muted"><strong>ID: </strong>{{ dish.id }}</p>
+                {% endif %}
+                <p><strong>Name: </strong><a href="{{ cook.get_absolute_url }}">{{ dish.name }}</a></p>
+
+              {% empty %}
+                <h5>No dishes!</h5>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+
+  <script src="{{ ASSETS_ROOT }}/js/soft-design-system.min.js?v=1.0.1" type="text/javascript"></script>
+
+{% endblock javascripts %}
