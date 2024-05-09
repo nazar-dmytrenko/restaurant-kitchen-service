@@ -22,7 +22,7 @@
             <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mt-sm-0 mt-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
                 <h4 class="mb-0">{{ cook.first_name }} {{ cook.last_name }}</h4>
-                {% if user.is_superuser or user.id == cook.id %}
+                {% if user.is_superuser or request.user.is_authenticated %}
                 <div class="d-block">
                   <a href="/cook/{{ cook.id }}/update" type="button" class="btn bg-gradient-info w-auto me-1 mb-0">update</a>
                   <a href="/cook/{{ cook.id }}/delete" type="button" class="btn bg-gradient-danger w-auto me-1 mb-0">delete</a>
