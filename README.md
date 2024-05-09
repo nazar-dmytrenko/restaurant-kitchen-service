@@ -12,7 +12,7 @@
 - Repository: https://github.com/nazar-dmytrenko/restaurant-kitchen-service
 - Issue tracker: https://github.com/nazar-dmytrenko/restaurant-kitchen-service/issues
   - In case of sensitive bugs like security vulnerabilities, please contact
-    sidorenkoandrij217@gmail.com directly instead of using issue tracker. I value your effort
+    nazarkadm@gmail.com directly instead of using issue tracker. I value your effort
     to improve the security and privacy of this project!
 
 - Here is the link to the deployed website: https://restaurant-kitchen-service-9auo.onrender.com
