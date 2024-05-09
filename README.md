@@ -22,7 +22,7 @@
 To see the website itself, you can check out my website at the [link above](https://restaurant-kitchen-service-9auo.onrender.com)
 It is not necessary to create a new account, you can use test one.
 * Login: user
-* Password: user12345
+* Password: user1234
 
 A quick introduction of the setup you need to get run a project.
 1. Fork a repo.
